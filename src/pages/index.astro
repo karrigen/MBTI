@@ -58,36 +58,32 @@ import questions from '../data/quiz.json';
         color: #1e293b;
         border: 2px solid #cbd5e1;
         border-radius: 14px;
-        padding: 18px;
-        margin-bottom: 14px;
-        font-size: 1.2rem;
-        line-height: 1.5;
+        padding: 20px 18px;
+        margin-bottom: 20px;
+        font-size: 1.35rem;
+        line-height: 1.6;
         text-align: left;
         cursor: pointer;
         transition: border-color 0.15s ease, box-shadow 0.15s ease;
         -webkit-tap-highlight-color: transparent;
       }
+      .option-btn:last-child {
+        margin-bottom: 0;
+      }
+      .option-btn .option-label {
+        display: inline-block;
+        font-weight: bold;
+        color: #0284c7;
+        margin-right: 8px;
+      }
       .option-btn:hover,
       .option-btn:focus {
-        border-color: #0ea5e9;
-        box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25);
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
         outline: none;
       }
       .option-btn:active {
-        border-color: #0284c7;
-      }
-      .start-btn {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, #fbbf24, #f59e0b);
-        color: #ffffff;
-        border: none;
-        border-radius: 14px;
-        padding: 18px;
-        font-size: 1.3rem;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 24px;
+        border-color: #2563eb;
       }
 
       /* 手机屏幕进一步放大字号、增加点击区域 */
