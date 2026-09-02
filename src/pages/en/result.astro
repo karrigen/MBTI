@@ -1,0 +1,84 @@
+---
+const mbtiMap: Record<string, { title: string; desc: string }> = {
+  "INTJ": { title: "🦉 The Foresighted Night-Owl Scholar", desc: "You have strong logic and independent thinking, always planning your next move carefully." },
+  "INTP": { title: "🧪 The Curious Potion Master", desc: "You love figuring out how things work, with a mind full of new ideas and theories." },
+  "ENTJ": { title: "🦁 The Bold Lion-Hearted Commander", desc: "You're a natural leader who confidently guides your team through any challenge." },
+  "ENTP": { title: "🦊 The Clever Illusion Solver", desc: "You think fast and love discovering new tricks and breaking the rules a little." },
+  "INFJ": { title: "🔮 The Insightful Little Seer", desc: "You have a warm, sensitive heart and can always tell how others are feeling." },
+  "INFP": { title: "🦄 The Gentle Unicorn Guardian", desc: "You're full of empathy and imagination, cherishing your feelings and dreams deeply." },
+  "ENFJ": { title: "☀️ The Warm Bard of Light", desc: "You're full of warmth and encouragement, and everyone trusts and loves you." },
+  "ENFP": { title: "✨ The Sparkling Star Creator", desc: "You're curious and enthusiastic, turning endless inspiration into joy for everyone." },
+  "ISTJ": { title: "🛡️ The Rule-Keeping Order Knight", desc: "You're steady and careful, always finishing what you promise to do." },
+  "ISFJ": { title: "🌿 The Forest-Guarding Gentle Bear", desc: "You quietly give and care, always looking after the people around you." },
+  "ESTJ": { title: "📜 The Fair Enforcement Officer", desc: "You're organized and efficient, great at keeping complicated things in order." },
+  "ESFJ": { title: "🏰 The Warm Castle Host", desc: "You're sociable and caring, making everyone feel welcome and comfortable." },
+  "ISTP": { title: "🛠️ The Skilled Rune Craftsman", desc: "You're great with your hands and stay calm to quickly solve real problems." },
+  "ISFP": { title: "🎨 The Free-Spirited Nature Artist", desc: "You see the world in your own unique way and love expressing beauty and feelings." },
+  "ESTP": { title: "🦅 The Wind-Chasing Broomstick Racer", desc: "You're full of action and adventure, shining brightest when things get real." },
+  "ESFP": { title: "🎭 The Charming Magic Stage Star", desc: "You're full of energy and humor, bringing laughter wherever you go." }
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Magic House Result</title>
+    <style is:global>
+      * { box-sizing: border-box; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background-color: #ffffff;
+        color: #1e293b;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 32px 16px;
+        text-align: center;
+      }
+      .card {
+        border: 2px solid #0ea5e9; border-radius: 20px; padding: 28px 20px;
+        background: #ffffff; box-shadow: 0 6px 20px rgba(14, 165, 233, 0.12);
+      }
+      .type-code {
+        display: inline-block; font-size: 1.1rem; color: #0284c7; font-weight: bold;
+        letter-spacing: 2px; background-color: rgba(14, 165, 233, 0.08);
+        padding: 6px 14px; border-radius: 20px; margin-bottom: 12px;
+      }
+      .title { font-size: 1.7rem; margin: 16px 0; color: #d97706; line-height: 1.4; }
+      .desc { font-size: 1.15rem; line-height: 1.8; color: #475569; margin-bottom: 24px; }
+      .btn {
+        display: inline-block; margin-top: 12px; padding: 16px 28px;
+        background-color: #ffffff; color: #0284c7; border: 2px solid #0ea5e9;
+        border-radius: 14px; text-decoration: none; font-size: 1.15rem; font-weight: bold;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+      .btn:hover, .btn:focus { border-color: #0284c7; box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25); outline: none; }
+      @media (max-width: 480px) {
+        body { padding: 24px 12px; }
+        .type-code { font-size: 1rem; }
+        .title { font-size: 1.5rem; }
+        .desc { font-size: 1.1rem; }
+        .btn { font-size: 1.1rem; padding: 16px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="type-code" id="mbti-code">Analyzing...</div>
+      <h1 class="title" id="mbti-title"></h1>
+      <p class="desc" id="mbti-desc"></p>
+    </div>
+
+    <a href="/en" class="btn">Take Quiz Again</a>
+
+    <script define:vars={{ mbtiMap }}>
+      const urlParams = new URLSearchParams(window.location.search);
+      const type = (urlParams.get('type') || 'ENFP').toUpperCase();
+      const info = mbtiMap[type] || mbtiMap['ENFP'];
+
+      document.getElementById('mbti-code').innerText = `House Type: ${type}`;
+      document.getElementById('mbti-title').innerText = info.title;
+      document.getElementById('mbti-desc').innerText = info.desc;
+    </script>
+  </body>
+</html>

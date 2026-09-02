@@ -1,0 +1,82 @@
+[
+  { "id": 1, "question": "It's break time at magic school. Where do you go?", "options": [
+    { "text": "To the busy magic plaza to fly broomsticks with classmates", "dimension": "E" },
+    { "text": "To a quiet corner of the library to read about magical creatures alone", "dimension": "I" }
+  ]},
+  { "id": 2, "question": "Your professor assigns you to study a mysterious plant. What do you do first?", "options": [
+    { "text": "Carefully observe its leaf color, shape, and smell", "dimension": "S" },
+    { "text": "Imagine what it could build if it grew huge, like a floating castle", "dimension": "N" }
+  ]},
+  { "id": 3, "question": "Two young wizards are arguing over who gets to use a wand. How do you help?", "options": [
+    { "text": "Check the school rules to see whose wand it originally was, then decide fairly", "dimension": "T" },
+    { "text": "Care about how they feel and suggest they take turns so no one is upset", "dimension": "F" }
+  ]},
+  { "id": 4, "question": "Tomorrow you leave for the Mysterious Forest. What do you do tonight?", "options": [
+    { "text": "Neatly pack your potions, flashlight, and map in order", "dimension": "J" },
+    { "text": "Feel too excited to plan — decide which path to take once you get there", "dimension": "P" }
+  ]},
+  { "id": 5, "question": "At the magic feast, you need to introduce yourself. What do you do?", "options": [
+    { "text": "Walk right up, wave to everyone, and say lots of fun things", "dimension": "E" },
+    { "text": "Feel a little shy and only want to chat with one or two close friends nearby", "dimension": "I" }
+  ]},
+  { "id": 6, "question": "You find a glowing stone on the path. What's your first reaction?", "options": [
+    { "text": "Touch it to feel its texture, temperature, and weight", "dimension": "S" },
+    { "text": "Wonder if it's a meteorite from space or holds ancient magic", "dimension": "N" }
+  ]},
+  { "id": 7, "question": "You accidentally added the wrong ingredient and your potion changed color. What do you do?", "options": [
+    { "text": "Calmly think about what you added wrong and check a book to fix it", "dimension": "T" },
+    { "text": "Feel upset, worried your professor will be disappointed or give you a low grade", "dimension": "F" }
+  ]},
+  { "id": 8, "question": "You're in charge of the weekend magic show. What do you do?", "options": [
+    { "text": "Make a schedule ahead of time and assign who handles props and lines", "dimension": "J" },
+    { "text": "Prepare as you go — improvising often brings the best surprises", "dimension": "P" }
+  ]},
+  { "id": 9, "question": "Joining a new magic team, you usually...", "options": [
+    { "text": "Greet everyone right away and quickly become the group's happy spark", "dimension": "E" },
+    { "text": "Quietly watch from the side and wait for others to talk to you first", "dimension": "I" }
+  ]},
+  { "id": 10, "question": "During magic history class, what catches your attention most?", "options": [
+    { "text": "The exact years, places, and names of the heroes involved", "dimension": "S" },
+    { "text": "The hidden meaning behind events, and how the world might change with different choices", "dimension": "N" }
+  ]},
+  { "id": 11, "question": "Your best friend accidentally broke your crystal ball. What do you do?", "options": [
+    { "text": "Feel a bit sad, but since it was an accident, focus on figuring out how to fix it", "dimension": "T" },
+    { "text": "First comfort your friend so they don't feel guilty, then deal with the broken ball", "dimension": "F" }
+  ]},
+  { "id": 12, "question": "What does your desk or room usually look like?", "options": [
+    { "text": "Books and wands neatly arranged — I know exactly where everything is", "dimension": "J" },
+    { "text": "A little messy, but I can always find my things — it feels more free that way", "dimension": "P" }
+  ]},
+  { "id": 13, "question": "After a tiring day of magic training, how do you recharge?", "options": [
+    { "text": "Find some friends to chat, play cards, or games with", "dimension": "E" },
+    { "text": "Go back to your room to listen to music or read a favorite picture book", "dimension": "I" }
+  ]},
+  { "id": 14, "question": "If you could invent a brand new spell, you would choose to make:", "options": [
+    { "text": "A useful spell that quickly tidies your room or ties your shoes", "dimension": "S" },
+    { "text": "A fantastical spell that lets you fly above the clouds into a rainbow castle", "dimension": "N" }
+  ]},
+  { "id": 15, "question": "You just lost a game of magic chess. What's your first thought?", "options": [
+    { "text": "Figure out exactly which move went wrong so you can win next time", "dimension": "T" },
+    { "text": "Feel a little sad, hoping your friend won't tease you for losing", "dimension": "F" }
+  ]},
+  { "id": 16, "question": "Vacation is coming up. How do you plan for it?", "options": [
+    { "text": "Make a daily schedule and reading plan, and stick to it", "dimension": "J" },
+    { "text": "No plans at all — sleep in and do whatever feels fun each day", "dimension": "P" }
+  ]},
+  { "id": 17, "question": "You find an injured baby unicorn in the forest. What do you do?", "options": [
+    { "text": "Loudly call your friends for help while comforting the unicorn out loud", "dimension": "E" },
+    { "text": "Quietly and gently approach, trying to softly pet it", "dimension": "I" }
+  ]},
+  { "id": 18, "question": "While practicing broomstick flying, you prefer to:", "options": [
+    { "text": "Follow the standard posture your professor taught, step by step, to stay safe", "dimension": "S" },
+    { "text": "Try figuring out your own flying tricks and new poses", "dimension": "N" }
+  ]},
+  { "id": 19, "question": "During a team project, a teammate makes a mistake in the steps. You:", "options": [
+    { "text": "Point out the mistake directly, since fixing it quickly matters most for the team", "dimension": "T" },
+    { "text": "Gently remind them, being careful to protect their confidence", "dimension": "F" }
+  ]},
+  { "id": 20, "question": "Your professor gives homework with no deadline. You:", "options": [
+    { "text": "Finish it early so you can stop worrying about it", "dimension": "J" },
+    { "text": "Set it aside and finish it all at once right before it's due", "dimension": "P" }
+  ]}
+]

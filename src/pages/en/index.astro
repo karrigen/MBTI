@@ -1,12 +1,12 @@
 ---
-import questions from '../data/quiz.json';
+import questions from '../../data/quiz.en.json';
 ---
 
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>魔法学院分院帽测试</title>
+    <title>Magic School Sorting Quiz</title>
     <style is:global>
       * { box-sizing: border-box; }
       body {
@@ -25,90 +25,32 @@ import questions from '../data/quiz.json';
         padding: 20px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
       }
-      h1 {
-        color: #d97706;
-        font-size: 1.9rem;
-        text-align: center;
-        margin-bottom: 14px;
-        line-height: 1.3;
-      }
-      p {
-        color: #475569;
-        line-height: 1.7;
-        text-align: center;
-        font-size: 1.15rem;
-      }
-      .progress {
-        color: #0284c7;
-        font-size: 1.05rem;
-        margin-bottom: 10px;
-        font-weight: bold;
-      }
-      .question {
-        font-size: 1.4rem;
-        color: #0f172a;
-        margin-bottom: 20px;
-        text-align: left;
-        line-height: 1.5;
-      }
-
-      /* 答案选项按钮 */
+      h1 { color: #d97706; font-size: 1.9rem; text-align: center; margin-bottom: 14px; line-height: 1.3; }
+      p { color: #475569; line-height: 1.7; text-align: center; font-size: 1.15rem; }
+      .lang-switch { text-align: center; margin-bottom: 12px; }
+      .lang-switch a { color: #0284c7; font-size: 0.95rem; text-decoration: none; }
+      .progress { color: #0284c7; font-size: 1.05rem; margin-bottom: 10px; font-weight: bold; }
+      .question { font-size: 1.4rem; color: #0f172a; margin-bottom: 20px; text-align: left; line-height: 1.5; }
       .option-btn {
-        display: block;
-        width: 100%;
-        background-color: #ffffff;
-        color: #1e293b;
-        border: 2px solid #cbd5e1;
-        border-radius: 14px;
-        padding: 20px 18px;
-        margin-bottom: 20px;
-        font-size: 1.35rem;
-        line-height: 1.6;
-        text-align: left;
-        cursor: pointer;
-        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        display: block; width: 100%; background-color: #ffffff; color: #1e293b;
+        border: 2px solid #cbd5e1; border-radius: 14px; padding: 20px 18px;
+        margin-bottom: 20px; font-size: 1.35rem; line-height: 1.6; text-align: left;
+        cursor: pointer; transition: border-color 0.15s ease, box-shadow 0.15s ease;
         -webkit-tap-highlight-color: transparent;
       }
-      .option-btn:last-child {
-        margin-bottom: 0;
+      .option-btn:last-child { margin-bottom: 0; }
+      .option-btn .option-label { display: inline-block; font-weight: bold; color: #0284c7; margin-right: 8px; }
+      .option-btn:hover, .option-btn:focus {
+        border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); outline: none;
       }
-      .option-btn .option-label {
-        display: inline-block;
-        font-weight: bold;
-        color: #0284c7;
-        margin-right: 8px;
-      }
-      .option-btn:hover,
-      .option-btn:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
-        outline: none;
-      }
-      .option-btn:active {
-        border-color: #2563eb;
-      }
-
-      /* 开始测试按钮，样式独立，不受上面选项按钮影响 */
+      .option-btn:active { border-color: #2563eb; }
       .start-btn {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, #fbbf24, #f59e0b);
-        color: #ffffff;
-        border: none;
-        border-radius: 14px;
-        padding: 18px;
-        font-size: 1.3rem;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 24px;
+        display: block; width: 100%; background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        color: #ffffff; border: none; border-radius: 14px; padding: 18px;
+        font-size: 1.3rem; font-weight: bold; cursor: pointer; margin-top: 24px;
         transition: opacity 0.15s ease;
       }
-      .start-btn:hover,
-      .start-btn:focus {
-        opacity: 0.9;
-        outline: none;
-      }
-
+      .start-btn:hover, .start-btn:focus { opacity: 0.9; outline: none; }
       @media (max-width: 480px) {
         body { padding: 16px 12px; }
         h1 { font-size: 1.6rem; }
@@ -120,17 +62,14 @@ import questions from '../data/quiz.json';
     </style>
   </head>
   <body>
-    <!-- 1. 首页欢迎屏 -->
-    <div style="text-align:center; margin-bottom:12px; font-size:0.95rem;">
-      中文 | <a href="/en" style="color:#0284c7; text-decoration:none;">EN</a>
-    </div>
+    <div class="lang-switch"><a href="/">中文</a> | EN</div>
+
     <div id="start-screen" class="card">
-      <h1>🧙‍♂️ 魔法学院分院帽测试</h1>
-      <p>回答 20 道简单的小问题，探索隐藏在你心中的魔法学院属性与神奇天赋！</p>
-      <button id="start-btn" class="start-btn">开始测试</button>
+      <h1>🧙‍♂️ Magic School Sorting Quiz</h1>
+      <p>Answer 20 simple questions to discover the magical house and hidden talent inside you!</p>
+      <button id="start-btn" class="start-btn">Start Quiz</button>
     </div>
 
-    <!-- 2. 答题屏 -->
     <div id="quiz-screen" class="card hidden">
       <div id="progress-text" class="progress"></div>
       <div id="question-text" class="question"></div>
@@ -153,7 +92,7 @@ import questions from '../data/quiz.json';
 
       function showQuestion() {
         const q = questions[currentIndex];
-        document.getElementById('progress-text').innerText = `第 ${currentIndex + 1} / ${questions.length} 题`;
+        document.getElementById('progress-text').innerText = `Question ${currentIndex + 1} of ${questions.length}`;
         document.getElementById('question-text').innerText = q.question;
 
         const container = document.getElementById('options-container');
@@ -172,7 +111,6 @@ import questions from '../data/quiz.json';
       function selectOption(dim) {
         userAnswers.push(dim);
         currentIndex++;
-
         if (currentIndex < questions.length) {
           showQuestion();
         } else {
@@ -183,15 +121,13 @@ import questions from '../data/quiz.json';
       function showResult() {
         const counts = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
         userAnswers.forEach(d => counts[d]++);
-
         const mbti = [
           counts.E >= counts.I ? 'E' : 'I',
           counts.S >= counts.N ? 'S' : 'N',
           counts.T >= counts.F ? 'T' : 'F',
           counts.J >= counts.P ? 'J' : 'P'
         ].join('');
-
-        window.location.href = `/result?type=${mbti}`;
+        window.location.href = `/en/result?type=${mbti}`;
       }
     </script>
   </body>
