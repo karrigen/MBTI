@@ -51,6 +51,8 @@ import questions from '../data/quiz.json';
         text-align: left;
         line-height: 1.5;
       }
+
+      /* 答案选项按钮 */
       .option-btn {
         display: block;
         width: 100%;
@@ -86,13 +88,33 @@ import questions from '../data/quiz.json';
         border-color: #2563eb;
       }
 
-      /* 手机屏幕进一步放大字号、增加点击区域 */
+      /* 开始测试按钮，样式独立，不受上面选项按钮影响 */
+      .start-btn {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        color: #ffffff;
+        border: none;
+        border-radius: 14px;
+        padding: 18px;
+        font-size: 1.3rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 24px;
+        transition: opacity 0.15s ease;
+      }
+      .start-btn:hover,
+      .start-btn:focus {
+        opacity: 0.9;
+        outline: none;
+      }
+
       @media (max-width: 480px) {
         body { padding: 16px 12px; }
         h1 { font-size: 1.6rem; }
         p { font-size: 1.1rem; }
         .question { font-size: 1.3rem; }
-        .option-btn { font-size: 1.15rem; padding: 20px 16px; }
+        .option-btn { font-size: 1.3rem; padding: 22px 16px; }
         .start-btn { font-size: 1.25rem; padding: 20px; }
       }
     </style>
@@ -134,10 +156,11 @@ import questions from '../data/quiz.json';
         const container = document.getElementById('options-container');
         container.innerHTML = '';
 
-        q.options.forEach(opt => {
+        const labels = ['A', 'B'];
+        q.options.forEach((opt, index) => {
           const btn = document.createElement('button');
           btn.className = 'option-btn';
-          btn.innerText = opt.text;
+          btn.innerHTML = `<span class="option-label">${labels[index]}.</span>${opt.text}`;
           btn.onclick = () => selectOption(opt.dimension);
           container.appendChild(btn);
         });
