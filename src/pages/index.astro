@@ -5,35 +5,79 @@ import questions from '../data/quiz.json';
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>魔法学院分院帽测试</title>
     <style>
-      body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        box-sizing: border-box;
+      }
       .hidden { display: none; }
-      button { display: block; width: 100%; margin: 10px 0; padding: 12px; cursor: pointer; }
+      .card {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+      h1 { color: #fbbf24; font-size: 1.8rem; text-align: center; margin-bottom: 12px; }
+      p { color: #94a3b8; line-height: 1.6; text-align: center; }
+      .progress { color: #38bdf8; font-size: 0.9rem; margin-bottom: 8px; font-weight: bold; }
+      .question { font-size: 1.25rem; color: #f1f5f9; margin-bottom: 24px; text-align: left; }
+      .option-btn {
+        display: block;
+        width: 100%;
+        background-color: #334155;
+        color: #f8fafc;
+        border: 1px solid #475569;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+        font-size: 1rem;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .option-btn:hover {
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+      }
+      .start-btn {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        color: #0f172a;
+        border: none;
+        border-radius: 12px;
+        padding: 16px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 24px;
+      }
     </style>
   </head>
   <body>
-    <!-- 1. 首页欢迎区 -->
-    <div id="start-screen">
+    <!-- 1. 首页欢迎屏 -->
+    <div id="start-screen" class="card">
       <h1>🧙‍♂️ 魔法学院分院帽测试</h1>
-      <p>回答 20 道小问题，探索你的魔法潜能！</p>
-      <button id="start-btn">开始测试</button>
+      <p>回答 20 道简单的小问题，探索隐藏在你心中的魔法学院属性与神奇天赋！</p>
+      <button id="start-btn" class="start-btn">开始测试</button>
     </div>
 
-    <!-- 2. 答题区 -->
-    <div id="quiz-screen" class="hidden">
-      <h3 id="progress-text"></h3>
-      <h2 id="question-text"></h2>
+    <!-- 2. 答题屏 -->
+    <div id="quiz-screen" class="card hidden">
+      <div id="progress-text" class="progress"></div>
+      <div id="question-text" class="question"></div>
       <div id="options-container"></div>
     </div>
 
-    <!-- 3. 结果展示区 -->
-    <div id="result-screen" class="hidden">
-      <h2>🎉 你的分院结果是：<span id="result-mbti"></span></h2>
-      <button onclick="location.reload()">重新测试</button>
-    </div>
-
-    <!-- 脚本：控制答题流程与计分 -->
     <script define:vars={{ questions }}>
       let currentIndex = 0;
       const userAnswers = [];
@@ -41,7 +85,6 @@ import questions from '../data/quiz.json';
       const startBtn = document.getElementById('start-btn');
       const startScreen = document.getElementById('start-screen');
       const quizScreen = document.getElementById('quiz-screen');
-      const resultScreen = document.getElementById('result-screen');
 
       startBtn.addEventListener('click', () => {
         startScreen.classList.add('hidden');
@@ -59,6 +102,7 @@ import questions from '../data/quiz.json';
 
         q.options.forEach(opt => {
           const btn = document.createElement('button');
+          btn.className = 'option-btn';
           btn.innerText = opt.text;
           btn.onclick = () => selectOption(opt.dimension);
           container.appendChild(btn);
@@ -77,11 +121,8 @@ import questions from '../data/quiz.json';
       }
 
       function showResult() {
-        quizScreen.classList.add('hidden');
-        resultScreen.classList.remove('hidden');
-
-        // 计算得分
-        const counts = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+        // 汇总维度得分
+        const counts = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
         userAnswers.forEach(d => counts[d]++);
 
         const mbti = [
@@ -91,7 +132,8 @@ import questions from '../data/quiz.json';
           counts.J >= counts.P ? 'J' : 'P'
         ].join('');
 
-        document.getElementById('result-mbti').innerText = mbti;
+        // 跳转至结果页并带上参数
+        window.location.href = `/result?type=${mbti}`;
       }
     </script>
   </body>

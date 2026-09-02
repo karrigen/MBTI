@@ -1,5 +1,4 @@
 ---
-// 1. 定义 16 种性格的简易描述（也可以抽离成 json）
 const mbtiMap: Record<string, { title: string; desc: string }> = {
   "INTJ": { title: "🦉 深谋远虑的夜鹰学者", desc: "你拥有极强的逻辑与独立思考能力，总是能规划好每一步行动。" },
   "INTP": { title: "🧪 奇思妙想的魔药大师", desc: "你喜欢探究万物背后的道理，脑子里装满了新奇的创意与原理。" },
@@ -7,7 +6,7 @@ const mbtiMap: Record<string, { title: string; desc: string }> = {
   "ENTP": { title: "🦊 灵动机智的幻术解密者", desc: "你反应迅速、思维敏捷，最喜欢发现新玩法和打破常规。" },
   "INFJ": { title: "🔮 洞察人心的小预言家", desc: "你内心细腻温暖，总能敏锐地感受到别人的情绪并给予关怀。" },
   "INFP": { title: "🦄 浪漫温和的独角兽守护者", desc: "你富有同理心与想象力，珍视美好的情感与心中的理想。" },
-  "ENFJ": { title: "☀️ 温暖照耀的光明吟游诗人", desc: "你充满热情，善于鼓励大家，是伙伴们最信赖和喜爱的聚心骨。" },
+  "ENFJ": { title: "☀️ 温暖照耀的光明吟游诗人", desc: "你充满热情，善于鼓励大家，是伙伴们最信赖和喜爱的主心骨。" },
   "ENFP": { title: "✨ 璀璨闪耀的星空创客", desc: "你对世界充满好奇与热忱，能把无限的灵感变成快乐的源泉。" },
   "ISTJ": { title: "🛡️ 恪守规则的秩序骑士", desc: "你踏实可靠、做事细心，答应好的事情一定会认真负责到底。" },
   "ISFJ": { title: "🌿 守护自然的森林大白熊", desc: "你默默奉献、温和体贴，总是细心照顾身边的每一个人。" },
@@ -23,14 +22,51 @@ const mbtiMap: Record<string, { title: string; desc: string }> = {
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>魔法分院卡片</title>
     <style>
-      body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 0 20px; text-align: center; background: #0f172a; color: #fff; }
-      .card { border: 2px solid #38bdf8; border-radius: 16px; padding: 30px; background: #1e293b; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-      .type-code { font-size: 1.2rem; color: #38bdf8; font-weight: bold; }
-      .title { font-size: 1.8rem; margin: 15px 0; color: #fbbf24; }
-      .desc { font-size: 1rem; line-height: 1.6; color: #cbd5e1; }
-      .btn { display: inline-block; margin-top: 25px; padding: 10px 20px; background: #38bdf8; color: #0f172a; border-radius: 8px; text-decoration: none; font-weight: bold; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 50px 20px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      .card {
+        border: 2px solid #38bdf8;
+        border-radius: 20px;
+        padding: 36px 24px;
+        background: #1e293b;
+        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+      }
+      .type-code {
+        display: inline-block;
+        font-size: 1rem;
+        color: #38bdf8;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background-color: rgba(56, 189, 248, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      .title { font-size: 1.8rem; margin: 16px 0; color: #fbbf24; }
+      .desc { font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 24px; }
+      .btn {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 14px 28px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+      }
+      .btn:hover { background-color: #7dd3fc; }
     </style>
   </head>
   <body>
@@ -43,13 +79,13 @@ const mbtiMap: Record<string, { title: string; desc: string }> = {
     <a href="/" class="btn">重新测试</a>
 
     <script define:vars={{ mbtiMap }}>
-      // 从 URL 的 Query 参数获取 MBTI 类型 (例如 /result?type=ENFP)
+      // 读取 URL 的 type 参数 (如 /result?type=ENFP)
       const urlParams = new URLSearchParams(window.location.search);
       const type = (urlParams.get('type') || 'ENFP').toUpperCase();
 
       const info = mbtiMap[type] || mbtiMap['ENFP'];
 
-      document.getElementById('mbti-code').innerText = `[ ${type} ]`;
+      document.getElementById('mbti-code').innerText = `学院属性：${type}`;
       document.getElementById('mbti-title').innerText = info.title;
       document.getElementById('mbti-desc').innerText = info.desc;
     </script>
